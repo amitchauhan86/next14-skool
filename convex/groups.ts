@@ -20,13 +20,14 @@ export const create = mutation({
             return;
             throw new Error("User not stored in database.");
         }
-
+        const endsOnupdate = Date.now() + 30 * 24 * 60 * 60 * 1000;
         const groupId = await ctx.db.insert("groups", {
             name: args.name,
             description: args.description,
             ownerId: user._id,
             price: 0,
             memberNumber: 1,
+            endsOn:endsOnupdate
         });
 
         const userGroup = await ctx.db.insert("userGroups", {
@@ -180,7 +181,7 @@ export const updateDescription = mutation({
 
 
 //update subscription
-export const updateSubscription = internalMutation({
+export const updateSubscription = mutation({
     args: { subscriptionId: v.string(), groupId: v.id("groups"), endsOn: v.number() },
     handler: async (ctx, { subscriptionId, groupId, endsOn }) => {
         await ctx.db.patch(groupId, {

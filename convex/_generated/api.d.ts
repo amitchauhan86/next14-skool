@@ -23,6 +23,7 @@ import type * as likes from "../likes.js";
 import type * as modules from "../modules.js";
 import type * as posts from "../posts.js";
 import type * as stripe from "../stripe.js";
+import type * as stripe1 from "../stripe1.js";
 import type * as users from "../users.js";
 
 /**
@@ -43,6 +44,7 @@ declare const fullApi: ApiFromModules<{
   modules: typeof modules;
   posts: typeof posts;
   stripe: typeof stripe;
+  stripe1: typeof stripe1;
   users: typeof users;
 }>;
 export declare const api: FilterApi<

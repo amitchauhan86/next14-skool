@@ -9,7 +9,6 @@ export const pay = action({
     handler: async (ctx, args) => {
         const clerkUser = await ctx.auth.getUserIdentity();
         const user = await ctx.runQuery(api.users.currentUser, {});
-
         if (!user || !clerkUser) {
             throw new Error("User not authenticated!");
         }

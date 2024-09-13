@@ -36,7 +36,7 @@ export const NameEditor = ({
     const onInput = (value: string) => {
         setValue(value);
         update({
-            id: id,
+            id: id, 
             name: value || "Untitled"
         });
     };
